@@ -1,0 +1,40 @@
+//Rational.template                        Scott Simmons Spring 2014
+
+#include <iostream>
+#include <cassert>
+#include "numtheory.h"
+
+template <typename Item>
+Rational<Item>::Rational(Item n, Item d)
+{ // construcor
+  set(n, d);
+}
+
+template <typename Item>
+void Rational<Item>::set(Item n, Item d)
+{
+  assert(d != 0);
+  if (n == 0) { n_ = 0; d_ = 1; } else {
+    Item div = gcd(n, d);
+    n_ = n / div;
+    d_ = d / div;
+    if (d_ < 0) { d_ *= -1; n_ *= -1; }
+  }
+}
+
+template <typename Item>
+Rational<Item> Rational<Item>::operator/(const Rational<Item>& r2) const 
+{ 
+  assert (r2 != 0); 
+  return Rational<Item>(n_ * r2.d_, d_ * r2.n_); 
+}
+
+template <typename Item>
+std::ostream& operator<<(std::ostream &os, Rational<Item> const& r)
+{
+  if (r.den() == 1) os << r.num();
+  else if (r.num() == 0) os << 0;
+  else os << r.num() << "/" << r.den();
+  return os;
+}
+

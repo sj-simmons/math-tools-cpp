@@ -15,5 +15,5 @@ Math utilities in C++
     Type `make bernoulli; ./bernoulli` to compile and run [bernuolli.cpp](bernoulli.cpp).
 
     Note: for this application our polynomials have rational coefficients, implemented here in [Rational.h](Rational.h)
-    and [Rational.template](rational.template).
+    and [Rational.template](Rational.template).
 

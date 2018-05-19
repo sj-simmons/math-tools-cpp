@@ -9,9 +9,9 @@ GMPFLAGS = -lgmpxx -lgmp
 LDFLAGS =
 
 print-%: 	# make print-CXXFLAGS    for example
-	@echo '$(subst ','\'',$*=$($*)) (origin: $(origin $*), flavor: $(flavor $*))'	
+	@echo '$(subst ','\'',$*=$($*)) (origin: $(origin $*), flavor: $(flavor $*))'
 
-all: 
+all:
 	@echo please specify a target:
 	@echo "  primes"
 	@echo "  poly_perform"
@@ -24,26 +24,26 @@ all:
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ -c $<
 
-primes: primes.o 
-	$(CXX) $(CXXFLAGS) -o $@ $< $(GMPFLAGS) 
+primes: primes.o
+	$(CXX) $(CXXFLAGS) -o $@ $< $(GMPFLAGS)
 
 poly_perform: poly_perform.o fft.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-test_rat: test_rat.o 
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(GMPFLAGS) 
+test_rat: test_rat.o
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(GMPFLAGS)
 
 bernoulli: bernoulli.o
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(GMPFLAGS) 
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(GMPFLAGS)
 
 -include $(dep)
 
 %.d: %.cpp
 	@$(CXX) $(CXXFLAGS) $< -MM -MT $(@:.d=.o) >$@
 
-.PHONY: clean 
-clean: cleandep 
-	rm -f $(obj) primes poly_perform test_rat bernoulli 
+.PHONY: clean
+clean: cleandep
+	rm -f $(obj) primes poly_perform test_rat bernoulli
 
 .PHONY: cleandep
 cleandep:

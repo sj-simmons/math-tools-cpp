@@ -15,7 +15,7 @@ int main() {
   cout << " checking gcd " <<  gcd(m, n) << endl;
 
   Rational<int>  rrrr(3);
-  cout << " checking coersion " << rrrr << endl; 
+  cout << " checking coersion " << rrrr << endl;
 
   using coeff_type = mpz_class;
   //using coeff_type = long long;
@@ -53,8 +53,8 @@ int main() {
   cout << r6 << endl;
   r6.set(1,2);
   cout << r6 << endl;
-  cout << (r6 != 0) << endl; 
-  cout << r5 << " " << (r5 != 0) << endl; 
+  cout << (r6 != 0) << endl;
+  cout << r5 << " " << (r5 != 0) << endl;
   cout << Rational<int>(17,1)*r2 << endl;
 
   return 0;

@@ -1,44 +1,44 @@
 //numtheory.template  --  Copyright 2014 Scott Simmmons
 
-/* If b^{n-1} = 1 (mod n)  then, by Fermat's little theorem, n is acting 
+/* If b^{n-1} = 1 (mod n)  then, by Fermat's little theorem, n is acting
  * like a prime (so return 1); but, n may not be prime and is therefore
- * called a Fermat pseudo-prime to the base b. 
+ * called a Fermat pseudo-prime to the base b.
  *
- * If b^(n-1) is not congruent to 1 modulo n, then n is certainly not 
- * prime (so return 0). 
+ * If b^(n-1) is not congruent to 1 modulo n, then n is certainly not
+ * prime (so return 0).
  *
- * See section 1.3 of Algorithms by Vazirani, et.al.  
+ * See section 1.3 of Algorithms by Vazirani, et.al.
  *
- * Integers n which satisfy b^(n-1)=1 mod n for every b in {2,..,n-1} 
+ * Integers n which satisfy b^(n-1)=1 mod n for every b in {2,..,n-1}
  * that is relatively prime to n exist (so the Fermat test for primality
- * using a fixed base b can sometimes fail).  These are called Carmichael 
+ * using a fixed base b can sometimes fail).  These are called Carmichael
  * numbers. (FYI, if (b,n)>1 the congruence is not one and we detect that
  * n is not prime.)
 */
 template <typename Item>
 inline int isprimeFermat( Item n, Item b) {
   if (powmod(b, n-1, n) == 1) {
-    return 1; 
+    return 1;
   }
   return 0;
 }
 
-/* If n is not prime by Fermat's test, return 0.  Otherwise, check and 
+/* If n is not prime by Fermat's test, return 0.  Otherwise, check and
  * see if n is an Euler pseudo-prime to the base b.  That is, check if
  * b^((n-1)/2) is congruent to (a/n) modulo n, where (a/n) is the jacobi
- * symbol. Return 1 if the congruence holds.  
+ * symbol. Return 1 if the congruence holds.
  *
  * Euler pseudo-primes (which pass the test for every base b relatively
- * prime to itself but are not prime) are clearly Fermat pseudo-primes.  
+ * prime to itself but are not prime) are clearly Fermat pseudo-primes.
  * The smallest is 1729 = 7*13*19.
 */
 template <typename Item>
 int isprimeEuler( Item n, Item b) {
   if (isprimeFermat(n, b) == 0) return  0;
   Item r = n-1, c;
-  while (r % 2 == 0)  r = r / 2; 
+  while (r % 2 == 0)  r = r / 2;
   c = powmod(b, r, n);
-  if (c == 1) return 1; 
+  if (c == 1) return 1;
   while (1) {
     if ( c == 1 ) return 0;
     if ( c == n-1 ) return 1;
@@ -49,7 +49,7 @@ int isprimeEuler( Item n, Item b) {
 /* This may classify a composite number as prime.  The least composite
  * classified as prime is 25326001 = 2251 * 11251. */
 template <typename Item>
-int isprime( Item n ) {   
+int isprime( Item n ) {
   int  i, a[10] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
   for (i=0;i!=10;++i) {
    if (int(n) == a[i]) return 1;

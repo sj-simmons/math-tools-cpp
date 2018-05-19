@@ -4,7 +4,7 @@
  * @author Scott Simmons
  * @date 3/1/2014
  * @version 1.0
- * 
+ *
  * @section DESCRIPTION
  *
  * Rational number template class with typename Item
@@ -13,9 +13,9 @@
  *   e.g.,
  *
  *   using coeff_type = int;
- *   Rational<coeff_type> r(2,3);  
- * 
- *   Rational<coeff_type> r(7);   // coerced to 7/1           
+ *   Rational<coeff_type> r(2,3);
+ *
+ *   Rational<coeff_type> r(7);   // coerced to 7/1
  */
 
 #ifndef __RATIONAL_H
@@ -28,17 +28,17 @@ public:
   void set(Item n, Item d);
   Item num() const { return n_; }
   Item den() const { return d_; }
-  Rational operator+(const Rational& r2) const 
-                { return Rational(n_*r2.d_+r2.n_*d_, d_*r2.d_); } 
-  Rational operator*(const Rational& r2) const 
+  Rational operator+(const Rational& r2) const
+                { return Rational(n_*r2.d_+r2.n_*d_, d_*r2.d_); }
+  Rational operator*(const Rational& r2) const
                              { return Rational(n_*r2.n_, d_*r2.d_); }
   Rational operator-() const { return Rational(-n_, d_); }
   Rational operator-(const Rational& r2) const
                              { return *this + ( -r2 ); }
   Rational operator/(const Rational& r2) const;
-         
+
   //  fix these by putting coercing stuff to rational elsewhere??
-  bool operator==(const Rational& r2) const { 
+  bool operator==(const Rational& r2) const {
     return ( n_ == r2.n_ && d_ == r2.d_);
   }
   bool operator<(const Rational& r2) const {

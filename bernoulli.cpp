@@ -3,7 +3,7 @@
  * @author Scott Simmons
  * @date 3/1/2014
  * @version 1.0
- */ 
+ */
 
 #include <iostream>
 #include "Polynomial.h"
@@ -13,12 +13,12 @@ using namespace std;
 
 int main () {
   int n= 100;
-  using coeff_type = mpz_class; 
+  using coeff_type = mpz_class;
 
   Polynomial<Rational<coeff_type>> p(n+1), one(1), berniPoly(1);
 
   Rational<coeff_type> a[n+1];
-  a[0].set(0,1); 
+  a[0].set(0,1);
 
   for (int i=2; i!=n+2; ++i) {
     a[i-1].set(pow(-1,i),factorial(static_cast<unsigned long>(i)));
@@ -34,12 +34,12 @@ int main () {
     berniPoly = berniPoly *  p + one ;
     berniPoly.truncate(n);
   }
-  
-  //cout << berniPoly << endl; 
-  
+
+  //cout << berniPoly << endl;
+
   cout << "\nB_"<<n<<" = " <<
      Rational<coeff_type>(pow(-1,n)*
-                         factorial(static_cast<unsigned long>(n)))*berniPoly[n] 
+                         factorial(static_cast<unsigned long>(n)))*berniPoly[n]
      << "\n" << endl;
 
   return 0;

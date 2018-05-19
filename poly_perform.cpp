@@ -7,24 +7,24 @@
 using namespace std;
 
 int main () {
-  
-  using coeff_type = int; 
-  
+
+  using coeff_type = int;
+
   cout << "testing default constructor:  " << endl;
   Polynomial<coeff_type> ppp;
-  cout << "   default constructor constructs: " << ppp << " of degree "<< 
+  cout << "   default constructor constructs: " << ppp << " of degree "<<
                                  ppp.degree() << endl << endl;
   Polynomial<coeff_type> p(8), p1(5);
-  coeff_type  p_coeffs[8]={1,-1,1,-1,1,-1,1,2};  
+  coeff_type  p_coeffs[8]={1,-1,1,-1,1,-1,1,2};
   p.set_coeffs(p_coeffs);
-  coeff_type  p1_coeffs[5]={1,-1};  
+  coeff_type  p1_coeffs[5]={1,-1};
   p1.set_coeffs(p1_coeffs);
 //  cout << pow(p,4) << "\n";
   cout << "p = " << p << ", p1 = " << p1 << "\n";
 //  cout << p*p1 << "\n";
   cout << "testing addition p-p1  " << p-p1 << endl;
   cout << "testing addition p1+p  " << p1+p << endl;
-  
+
   Polynomial<coeff_type> pz(0);
  // pz[0] = 0;
   cout << " 0 poly " << pz << endl;
@@ -41,7 +41,7 @@ int main () {
   t = clock();
   //cout <<"\n" << pow(p,300) << endl;
   pow(p,300);
-  t = clock() - t; 
+  t = clock() - t;
   cout << ((float)t)/CLOCKS_PER_SEC << " seconds" << endl;
 
 /*
@@ -49,7 +49,7 @@ int main () {
   clock_t t2;
   t2 = clock();
   fftpow(p,300);
-  t2 = clock() - t2; 
+  t2 = clock() - t2;
   cout << ((float)t2)/CLOCKS_PER_SEC << " seconds" << endl;
 */
 

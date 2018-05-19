@@ -9,7 +9,7 @@ Math utilities in C++
 
   * [bernoulli.cpp](bernoulli.cpp) computes Bernoulli numbers via their generating
     series, so via polynomial multiplication.   This is not the most efficient way to compute those numbers.  In a
-    Data Structures and Algorithms course taught in Shanghai, we mainly used this code to compare the speed of 
+    Data Structures and Algorithms course taught in Shanghai, we mainly used this code to compare the speed of
     various implementations of polynomial multiplication.
 
     Type `make bernoulli; ./bernoulli` to compile and run [bernuolli.cpp](bernoulli.cpp).

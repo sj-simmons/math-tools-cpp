@@ -1,6 +1,6 @@
 /**
  *  @file primes.cpp
- *   counts the number of primes <= a specified number 
+ *   counts the number of primes <= a specified number
  */
 
 #include <iostream>
@@ -16,7 +16,7 @@ int main ()
     for (i=2; i!=n+1; ++i) {
       if (isprime(i))  ++count;
     }
-    cout << "The number primes <= " << n << " is " << count << endl;
+    cout << "The number of primes <= " << n << " is " << count << endl;
 
     return 0;
 }

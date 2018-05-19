@@ -23,10 +23,10 @@ void Rational<Item>::set(Item n, Item d)
 }
 
 template <typename Item>
-Rational<Item> Rational<Item>::operator/(const Rational<Item>& r2) const 
-{ 
-  assert (r2 != 0); 
-  return Rational<Item>(n_ * r2.d_, d_ * r2.n_); 
+Rational<Item> Rational<Item>::operator/(const Rational<Item>& r2) const
+{
+  assert (r2 != 0);
+  return Rational<Item>(n_ * r2.d_, d_ * r2.n_);
 }
 
 template <typename Item>
